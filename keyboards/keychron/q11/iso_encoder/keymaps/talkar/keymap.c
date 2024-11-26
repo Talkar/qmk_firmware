@@ -77,3 +77,71 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
     [TEST_1]   = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_VOLD, KC_VOLU) }
 };
 #endif // ENCODER_MAP_ENABLE
+
+
+bool rgb_matrix_indicators_user(void) {
+	    switch(get_highest_layer(layer_state|default_layer_state)) {
+		    case WIN_BASE:
+                rgb_matrix_set_color_all(0,0,0);
+                rgb_matrix_set_color(7,255,0,198);
+                rgb_matrix_set_color(1,255,0,198);
+                rgb_matrix_set_color(3,80,250,0);
+                rgb_matrix_set_color(5,100,0,255);
+                rgb_matrix_set_color(9,241,255,0);
+                rgb_matrix_set_color(11,255,0,198);
+                rgb_matrix_set_color(13,80,250,0);
+                rgb_matrix_set_color(17,100,0,255);
+                rgb_matrix_set_color(19,241,255,0);
+                rgb_matrix_set_color(21,255,0,198);
+                rgb_matrix_set_color(23,80,250,0);
+                rgb_matrix_set_color(25,100,0,255);
+                rgb_matrix_set_color(27,241,255,0);
+                rgb_matrix_set_color(31,255,0,198);
+                rgb_matrix_set_color(33,80,250,0);
+                rgb_matrix_set_color(35,100,0,255);
+                rgb_matrix_set_color(37,241,255,0);
+                rgb_matrix_set_color(39,255,0,198);
+                rgb_matrix_set_color(41,80,250,0);
+                rgb_matrix_set_color(43,100,0,255);
+                rgb_matrix_set_color(45,241,255,0);
+                rgb_matrix_set_color(47,255,0,198);
+                rgb_matrix_set_color(49,80,250,0);
+                rgb_matrix_set_color(51,100,0,255);
+                rgb_matrix_set_color(53,241,255,0);
+                break;
+            case TEST_1:
+                rgb_matrix_set_color_all(0,0,0);
+                rgb_matrix_set_color(22,100,0,255);
+                rgb_matrix_set_color(1,255,0,198);
+                rgb_matrix_set_color(3,80,250,0);
+                rgb_matrix_set_color(5,100,0,255);
+                rgb_matrix_set_color(9,241,255,0);
+                rgb_matrix_set_color(11,255,0,198);
+                rgb_matrix_set_color(13,80,250,0);
+                rgb_matrix_set_color(17,100,0,255);
+                rgb_matrix_set_color(19,241,255,0);
+                rgb_matrix_set_color(21,255,0,198);
+                rgb_matrix_set_color(23,80,250,0);
+                rgb_matrix_set_color(25,100,0,255);
+                rgb_matrix_set_color(27,241,255,0);
+                rgb_matrix_set_color(31,255,0,198);
+                rgb_matrix_set_color(33,80,250,0);
+                rgb_matrix_set_color(35,100,0,255);
+                rgb_matrix_set_color(37,241,255,0);
+                rgb_matrix_set_color(39,255,0,198);
+                rgb_matrix_set_color(41,80,250,0);
+                rgb_matrix_set_color(43,100,0,255);
+                rgb_matrix_set_color(45,241,255,0);
+                rgb_matrix_set_color(47,255,0,198);
+                rgb_matrix_set_color(49,80,250,0);
+                rgb_matrix_set_color(51,100,0,255);
+                rgb_matrix_set_color(53,241,255,0);
+                break;
+            default: //  for any other layers, or the default layer
+                break;
+        }
+  return false;
+}
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    return true;
+}
