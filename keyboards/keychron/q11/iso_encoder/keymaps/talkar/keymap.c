@@ -23,6 +23,11 @@ enum layers{
     TEST_1
 };
 
+enum custom_keycodes {
+    TUB_1 = SAFE_RANGE,
+    TUB_2
+};
+
 #define KC_TASK LGUI(KC_TAB)
 #define KC_FLXP LGUI(KC_E)
 
@@ -62,7 +67,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [TEST_1] = LAYOUT_92_iso(
         QK_BOOT,  _______,  _______,  _______,  _______,  _______,  _______,   _______,  _______,  _______,  _______,  _______,  _______,    _______,  _______,  _______,  QK_BOOT,
         _______,  _______,  LSFT(KC_1),  LSFT(KC_2),  LSFT(KC_3),  LSFT(KC_4),  LSFT(KC_5),   LSFT(KC_6),  LSFT(KC_7),  LSFT(KC_8),  LSFT(KC_9),  LSFT(KC_0),  LSFT(KC_MINS),    LSFT(KC_EQL),  _______,            _______,
-        _______,  _______,  _______,  _______,  KC_UP,  _______,  _______,   _______,  _______,  _______,  _______,  _______,  _______,    _______,                      _______,
+        _______,  _______,  TUB_1,  TUB_2,  KC_UP,  _______,  _______,   _______,  _______,  _______,  _______,  _______,  _______,    _______,                      _______,
         _______,  _______,  _______, KC_LEFT,  KC_DOWN,  KC_RGHT,  _______,   _______,  _______,  _______,  _______,  _______,  _______,    _______,  _______,            _______,
         _______,  _______,  _______,  _______,  _______,  _______,  _______,   _______,  _______,  _______,  _______,  _______,  _______,              _______,  _______,
         _______,  _______,  _______,  _______,  _______,            _______,                       _______,            _______,  _______,    _______,  _______,  _______,  _______),
@@ -82,66 +87,33 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
 bool rgb_matrix_indicators_user(void) {
 	    switch(get_highest_layer(layer_state|default_layer_state)) {
 		    case WIN_BASE:
-                rgb_matrix_set_color_all(0,0,0);
-                rgb_matrix_set_color(7,255,0,198);
-                rgb_matrix_set_color(1,255,0,198);
-                rgb_matrix_set_color(3,80,250,0);
-                rgb_matrix_set_color(5,100,0,255);
-                rgb_matrix_set_color(9,241,255,0);
-                rgb_matrix_set_color(11,255,0,198);
-                rgb_matrix_set_color(13,80,250,0);
-                rgb_matrix_set_color(17,100,0,255);
-                rgb_matrix_set_color(19,241,255,0);
-                rgb_matrix_set_color(21,255,0,198);
-                rgb_matrix_set_color(23,80,250,0);
-                rgb_matrix_set_color(25,100,0,255);
-                rgb_matrix_set_color(27,241,255,0);
-                rgb_matrix_set_color(31,255,0,198);
-                rgb_matrix_set_color(33,80,250,0);
-                rgb_matrix_set_color(35,100,0,255);
-                rgb_matrix_set_color(37,241,255,0);
-                rgb_matrix_set_color(39,255,0,198);
-                rgb_matrix_set_color(41,80,250,0);
-                rgb_matrix_set_color(43,100,0,255);
-                rgb_matrix_set_color(45,241,255,0);
-                rgb_matrix_set_color(47,255,0,198);
-                rgb_matrix_set_color(49,80,250,0);
-                rgb_matrix_set_color(51,100,0,255);
-                rgb_matrix_set_color(53,241,255,0);
+                rgb_matrix_set_color_all(255,0,0);
                 break;
             case TEST_1:
-                rgb_matrix_set_color_all(0,0,0);
-                rgb_matrix_set_color(22,100,0,255);
-                rgb_matrix_set_color(1,255,0,198);
-                rgb_matrix_set_color(3,80,250,0);
-                rgb_matrix_set_color(5,100,0,255);
-                rgb_matrix_set_color(9,241,255,0);
-                rgb_matrix_set_color(11,255,0,198);
-                rgb_matrix_set_color(13,80,250,0);
-                rgb_matrix_set_color(17,100,0,255);
-                rgb_matrix_set_color(19,241,255,0);
-                rgb_matrix_set_color(21,255,0,198);
-                rgb_matrix_set_color(23,80,250,0);
-                rgb_matrix_set_color(25,100,0,255);
-                rgb_matrix_set_color(27,241,255,0);
-                rgb_matrix_set_color(31,255,0,198);
-                rgb_matrix_set_color(33,80,250,0);
-                rgb_matrix_set_color(35,100,0,255);
-                rgb_matrix_set_color(37,241,255,0);
-                rgb_matrix_set_color(39,255,0,198);
-                rgb_matrix_set_color(41,80,250,0);
-                rgb_matrix_set_color(43,100,0,255);
-                rgb_matrix_set_color(45,241,255,0);
-                rgb_matrix_set_color(47,255,0,198);
-                rgb_matrix_set_color(49,80,250,0);
-                rgb_matrix_set_color(51,100,0,255);
-                rgb_matrix_set_color(53,241,255,0);
+                rgb_matrix_set_color_all(0,255,0);
                 break;
             default: //  for any other layers, or the default layer
                 break;
         }
   return false;
 }
+
+bool is_pressed(uint16_t mod_keycode){
+  return (get_mods() & (MOD_BIT(mod_keycode)));
+}
+
+void tap_with_altgr(uint16_t keycode)
+{
+    bool apply_alt = !is_pressed(KC_RALT);
+    if(apply_alt){ register_code(KC_RALT); }
+    tap_code(keycode);
+    if(apply_alt){ unregister_code(KC_RALT); }
+}
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case TUB_1: if(record->event.pressed == false){ tap_with_altgr(KC_7); } return false;
+        case TUB_2: if(record->event.pressed == false){ tap_with_altgr(KC_0); } return false;
+    }
     return true;
 }
