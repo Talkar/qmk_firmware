@@ -19,6 +19,6 @@ This is a keyboard firmware based on the [tmk\_keyboard firmware](https://github
 2. Install drivers in QMK_Toolbox
 
 ## Commands
-Compile: `qmk compile -kb keychron/q11/iso_encoder -km talkar`
-Flash: `qmk flash -kb keychron/q11/iso_encoder -km talkar`
+* Compile: `qmk compile -kb keychron/q11/iso_encoder -km talkar`
+* Flash: `qmk flash -kb keychron/q11/iso_encoder -km talkar`
 
