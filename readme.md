@@ -13,8 +13,8 @@ This is a keyboard firmware based on the [tmk\_keyboard firmware](https://github
 * [See the official documentation on docs.qmk.fm](https://docs.qmk.fm)
 
 ## Prerequisites
-Install [QMK_Msys](https://msys.qmk.fm/)
-Install [QMK_Toolbox](https://qmk.fm/toolbox)
+* Install [QMK_Msys](https://msys.qmk.fm/)
+* Install [QMK_Toolbox](https://qmk.fm/toolbox)
 1. Start QMK_Toolbox as admin
 2. Install drivers in QMK_Toolbox
 
