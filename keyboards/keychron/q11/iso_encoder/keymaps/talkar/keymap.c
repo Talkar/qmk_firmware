@@ -33,12 +33,7 @@ enum custom_keycodes {
 #define KC_TASK LGUI(KC_TAB)
 #define KC_FLXP LGUI(KC_E)
 
-// The number of per-key LEDs on each side of a 5-column Corne.
-#define NUM_LEDS_PER_SIDE 43
-
-// keyboards/crkbd/rev1/rev1.c has a hard-coded g_led_config with 27 LEDs, so we
-// have to work around this.
-#define NUM_LEDS_PER_SIDE_ON_NORMAL_CORNE 43
+#define NUM_LEDS_ON_LEFT_SIDE 43
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [MAC_BASE] = LAYOUT_92_iso(
@@ -92,21 +87,8 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
 };
 #endif // ENCODER_MAP_ENABLE
 
-// This is a thin wrapper around rgb_matrix_set_color which allows you to put
-// the same firmware on both halves of the keyboard (other than a #define for
-// `MASTER_LEFT` or `MASTER_RIGHT`) and still have the correct LEDs light up
-// regardless of which half has the USB cable in it.
-//
-// This complexity behind this logic is explained in the comments within the
-// function itself.
 void set_color_split(uint8_t key_code, uint8_t r, uint8_t g, uint8_t b) {
-    // When using defines for MASTER_LEFT and MASTER_RIGHT, is_keyboard_left()
-    // will be inaccurate. For example, (is_keyboard_left() &&
-    // !is_keyboard_master()) can NEVER be true.
-    //
-    // See https://docs.qmk.fm/#/feature_split_keyboard?id=setting-handedness
-    // for other ways to set handedness. If you use something other than the
-    // #defines, then you can just set `is_left` to `is_keyboard_left()`.
+
 #ifdef MASTER_LEFT
     bool is_left = true;
 #endif
@@ -116,22 +98,15 @@ void set_color_split(uint8_t key_code, uint8_t r, uint8_t g, uint8_t b) {
 
     bool left_is_master = (is_keyboard_master() && is_left) || (!is_keyboard_master() && !is_left);
 
-    // Note on constants: 23 is the number of LEDs on each side (24) minus 1.
-    // 27 is the number of LEDs that the Corne normally has with six columns.
-
-    // Rule #1: you must set the LED based on what the master's range is. So if
-    // the USB cable is in the left half, then the range is 0-23, otherwise it's
-    // 27-50.
-
 #ifdef CONSOLE_ENABLE
     uprintf("led index: %u, is_left: %u, is_keyboard_left: %u\n", key_code, is_left, is_keyboard_left());
 #endif
 
     // Rule #1
-    if (left_is_master && key_code >= NUM_LEDS_PER_SIDE)
-        key_code += NUM_LEDS_PER_SIDE_ON_NORMAL_CORNE;
-    else if (!left_is_master && key_code < NUM_LEDS_PER_SIDE)
-        key_code -= NUM_LEDS_PER_SIDE_ON_NORMAL_CORNE;
+    if (left_is_master && key_code >= NUM_LEDS_ON_LEFT_SIDE)
+        key_code += NUM_LEDS_ON_LEFT_SIDE;
+    else if (!left_is_master && key_code < NUM_LEDS_ON_LEFT_SIDE)
+        key_code -= NUM_LEDS_ON_LEFT_SIDE;
     rgb_matrix_set_color(key_code, r, g, b);
 }
 
