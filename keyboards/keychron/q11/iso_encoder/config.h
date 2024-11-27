@@ -18,7 +18,7 @@
 
 #define MASTER_LEFT
 #define SPLIT_LAYER_STATE_ENABLE
-#define SPLIT_TRANSPORT_MIRROR
+#define SPLIT_MODS_ENABLE
 
 /* Enable caps-lock LED */
 #define CAPS_LOCK_LED_INDEX 23

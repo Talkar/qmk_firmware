@@ -14,6 +14,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include QMK_KEYBOARD_H
+#include <stdlib.h>  // For itoa()
+#include "print.h"
 
 enum layers{
     MAC_BASE,
@@ -30,6 +32,13 @@ enum custom_keycodes {
 
 #define KC_TASK LGUI(KC_TAB)
 #define KC_FLXP LGUI(KC_E)
+
+// The number of per-key LEDs on each side of a 5-column Corne.
+#define NUM_LEDS_PER_SIDE 43
+
+// keyboards/crkbd/rev1/rev1.c has a hard-coded g_led_config with 27 LEDs, so we
+// have to work around this.
+#define NUM_LEDS_PER_SIDE_ON_NORMAL_CORNE 43
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [MAC_BASE] = LAYOUT_92_iso(
@@ -69,7 +78,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______,  _______,  LSFT(KC_1),  LSFT(KC_2),  LSFT(KC_3),  LSFT(KC_4),  LSFT(KC_5),   LSFT(KC_6),  KC_7,        KC_8,        KC_9,        LSFT(KC_0),  LSFT(KC_MINS),    LSFT(KC_EQL),  _______,            _______,
         _______,  _______,  TUB_1,       TUB_2,       KC_UP,       _______,     _______,      KC_4,        KC_5,        KC_6,        _______,     _______,     _______,          _______,                           _______,
         _______,  _______,  _______,     KC_LEFT,     KC_DOWN,     KC_RGHT,     _______,      KC_1,        KC_2,        KC_3,        _______,     _______,     _______,          _______,       _______,            _______,
-        _______,  _______,  _______,     _______,     _______,     _______,     _______,      KC_0,        _______,     _______,     _______,     _______,     _______,          _______,       _______,
+        _______,  _______,  _______,     _______,     _______,     _______,     _______,      _______,     KC_0,        _______,     _______,     _______,     _______,          _______,       _______,
         _______,  _______,  _______,     _______,     _______,                  _______,                                _______,                  _______,     _______,          _______,       _______,  _______,  _______),
 };
 
@@ -83,6 +92,48 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
 };
 #endif // ENCODER_MAP_ENABLE
 
+// This is a thin wrapper around rgb_matrix_set_color which allows you to put
+// the same firmware on both halves of the keyboard (other than a #define for
+// `MASTER_LEFT` or `MASTER_RIGHT`) and still have the correct LEDs light up
+// regardless of which half has the USB cable in it.
+//
+// This complexity behind this logic is explained in the comments within the
+// function itself.
+void set_color_split(uint8_t key_code, uint8_t r, uint8_t g, uint8_t b) {
+    // When using defines for MASTER_LEFT and MASTER_RIGHT, is_keyboard_left()
+    // will be inaccurate. For example, (is_keyboard_left() &&
+    // !is_keyboard_master()) can NEVER be true.
+    //
+    // See https://docs.qmk.fm/#/feature_split_keyboard?id=setting-handedness
+    // for other ways to set handedness. If you use something other than the
+    // #defines, then you can just set `is_left` to `is_keyboard_left()`.
+#ifdef MASTER_LEFT
+    bool is_left = true;
+#endif
+#ifdef MASTER_RIGHT
+    bool is_left = false;
+#endif
+
+    bool left_is_master = (is_keyboard_master() && is_left) || (!is_keyboard_master() && !is_left);
+
+    // Note on constants: 23 is the number of LEDs on each side (24) minus 1.
+    // 27 is the number of LEDs that the Corne normally has with six columns.
+
+    // Rule #1: you must set the LED based on what the master's range is. So if
+    // the USB cable is in the left half, then the range is 0-23, otherwise it's
+    // 27-50.
+
+#ifdef CONSOLE_ENABLE
+    uprintf("led index: %u, is_left: %u, is_keyboard_left: %u\n", key_code, is_left, is_keyboard_left());
+#endif
+
+    // Rule #1
+    if (left_is_master && key_code >= NUM_LEDS_PER_SIDE)
+        key_code += NUM_LEDS_PER_SIDE_ON_NORMAL_CORNE;
+    else if (!left_is_master && key_code < NUM_LEDS_PER_SIDE)
+        key_code -= NUM_LEDS_PER_SIDE_ON_NORMAL_CORNE;
+    rgb_matrix_set_color(key_code, r, g, b);
+}
 
 bool rgb_matrix_indicators_user(void) {
 	    switch(get_highest_layer(layer_state|default_layer_state)) {
@@ -91,18 +142,18 @@ bool rgb_matrix_indicators_user(void) {
                 break;
             case TEST_1:
                 rgb_matrix_set_color_all(255,0,0);
-                rgb_matrix_set_color(17,255,0,255); // Q
-                rgb_matrix_set_color(18,255,0,255); // W
-                rgb_matrix_set_color(51,0,0,255); // 7
-                rgb_matrix_set_color(52,0,0,255); // 8
-                rgb_matrix_set_color(53,0,0,255); // 9
-                rgb_matrix_set_color(59,0,0,255); // Y
-                rgb_matrix_set_color(60,0,0,255); // U
-                rgb_matrix_set_color(61,0,0,255); // I
-                rgb_matrix_set_color(67,0,0,255); // H
-                rgb_matrix_set_color(68,0,0,255); // J
-                rgb_matrix_set_color(69,0,0,255); // K
-                rgb_matrix_set_color(76,0,0,255); // N
+                set_color_split(17,255,0,255); // Q
+                set_color_split(18,255,0,255); // W
+                set_color_split(51,0,0,255); // 7
+                set_color_split(52,0,0,255); // 8
+                set_color_split(53,0,0,255); // 9
+                set_color_split(59,0,0,255); // Y
+                set_color_split(60,0,0,255); // U
+                set_color_split(61,0,0,255); // I
+                set_color_split(67,0,0,255); // H
+                set_color_split(68,0,0,255); // J
+                set_color_split(69,0,0,255); // K
+                set_color_split(76,0,0,255); // N
                 break;
             default: //  for any other layers, or the default layer
                 break;
@@ -122,10 +173,18 @@ void tap_with_altgr(uint16_t keycode)
     if(apply_alt){ unregister_code(KC_RALT); }
 }
 
+
+
+// Example keymap or user function where you want to print the indices
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case TUB_1: if(record->event.pressed == false){ tap_with_altgr(KC_7); } return false;
         case TUB_2: if(record->event.pressed == false){ tap_with_altgr(KC_0); } return false;
     }
-    return true;
+#ifdef CONSOLE_ENABLE
+    uprintf("KL: kc: 0x%04X, col: %2u, row: %2u, pressed: %u, time: %5u, int: %u, count: %u\n", keycode, record->event.key.col, record->event.key.row, record->event.pressed, record->event.time, record->tap.interrupted, record->tap.count);
+#endif
+  return true;
+return true;
 }
