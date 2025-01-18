@@ -28,6 +28,8 @@ This is a keyboard firmware based on the [tmk\_keyboard firmware](https://github
 4. Execute `qmk setup`
 5. If there is an error of qmk not found, execute `echo 'PATH="$HOME/.local/bin:$PATH"' >> $HOME/.bashrc && source $HOME/.bashrc`
 6. Answer `y` to install dependencies
+7. Copy `/qmk_firmware/util/udev/50-qmk.rules` to `/etc/udev/rules.d/50-qmk.rules`
+8. Execute `sudo udevadm control --reload-rules` and `sudo udevadm trigger`
 
 ## Commands
 * Compile: `qmk compile -kb keychron/q11/iso_encoder -km talkar`
