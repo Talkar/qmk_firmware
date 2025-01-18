@@ -11,12 +11,23 @@ This is a keyboard firmware based on the [tmk\_keyboard firmware](https://github
 ## Documentation
 
 * [See the official documentation on docs.qmk.fm](https://docs.qmk.fm)
+# Windows
 
 ## Prerequisites
 * Install [QMK_Msys](https://msys.qmk.fm/)
 * Install [QMK_Toolbox](https://qmk.fm/toolbox)
 1. Start QMK_Toolbox as admin
 2. Install drivers in QMK_Toolbox
+
+# Linux
+
+## prerequisites
+1. Ensure python3-pip is installed `sudo apt install -y git python3-pip`
+2. Install qmk cli `python3 -m pip install --user qmk`
+3. Clone this repo
+4. Execute `qmk setup`
+5. If there is an error of qmk not found, execute `echo 'PATH="$HOME/.local/bin:$PATH"' >> $HOME/.bashrc && source $HOME/.bashrc`
+6. Answer `y` to install dependencies
 
 ## Commands
 * Compile: `qmk compile -kb keychron/q11/iso_encoder -km talkar`
