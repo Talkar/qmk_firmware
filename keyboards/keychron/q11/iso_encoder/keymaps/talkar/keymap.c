@@ -45,7 +45,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______,  KC_LCTL,  MO(GAMING_FN), KC_LWIN,  KC_LALT, KC_SPC,              LT(GAMING_FN, KC_SPC), KC_RALT,  MO(GAMING_FN), KC_RCTL,  KC_LEFT,  KC_DOWN,  KC_RGHT),
 
     [GAMING_FN] = LAYOUT_92_iso(
-        RGB_TOG,  _______,  KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,     KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10,   KC_F11,     KC_F12,   _______,  _______,  _______,
+        RGB_TOG,  _______,  KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,     KC_F6,  KC_MPRV,  KC_MPLY,  KC_MNXT,  KC_MUTE,  KC_VOLD,    KC_VOLU,   _______,  _______,  _______,
         _______,  _______,  KC_7,     KC_8,     KC_9,     KC_0,     KC_MINS,   KC_EQL,   KC_7,     KC_8,     KC_9,     _______,  _______,    _______,  _______,            _______,
         _______,  _______,  KC_P,     KC_O,     KC_I,     KC_U,     KC_Y,      KC_4,     KC_5,     KC_6,     _______,  _______,  _______,    _______,                      _______,
         _______,  _______,  KC_SCLN,  KC_L,     KC_K,     KC_J,     KC_H,      KC_1,     KC_2,     KC_3,     _______,  _______,  _______,    _______,  _______,            _______,
