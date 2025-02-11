@@ -53,12 +53,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______,  _______,  _______,  _______,  _______,  KC_CAPS,             _______,            _______,  _______,    _______,  _______,  _______,  _______),
 
     [WIN_BASE] = LAYOUT_92_iso(
-        QK_BOOT,  KC_CAPS,  KC_F1,      KC_F2,    KC_F3,   KC_F4,    KC_F5,     KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10,   KC_F11,     KC_F12,   KC_INS,   KC_DEL,   QK_BOOT,
-        _______,  KC_GRV,   KC_1,       KC_2,     KC_3,    KC_4,     KC_5,      KC_6,     KC_7,     KC_8,     KC_9,     KC_0,     KC_MINS,    KC_EQL,   KC_BSPC,            KC_PGUP,
-        _______,  KC_TAB,   KC_Q,       KC_W,     KC_E,    KC_R,     KC_T,      KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,     KC_LBRC,    KC_RBRC,                      KC_PGDN,
-        _______,  KC_ESC,   KC_A,       KC_S,     KC_D,    KC_F,     KC_G,      KC_H,     KC_J,     KC_K,     KC_L,     KC_SCLN,  KC_QUOT,    KC_NUHS,  KC_ENT,             KC_HOME,
-        _______,  KC_LSFT,  KC_NUBS,    KC_Z,     KC_X,    KC_C,     KC_V,      KC_B,     KC_N,     KC_M,     KC_COMM,  KC_DOT,   KC_SLSH,              KC_RSFT,  KC_UP,
-        _______,  KC_LCTL,  MO(TEST_1), KC_LWIN,  KC_LALT,           KC_SPC,                        KC_SPC, KC_RALT,  MO(TEST_1), KC_RCTL,  KC_LEFT,  KC_DOWN,  KC_RGHT),
+        QK_BOOT,  KC_CAPS,    KC_F1,      KC_F2,    KC_F3,   KC_F4,    KC_F5,     KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10,   KC_F11,     KC_F12,   KC_INS,   KC_DEL,   QK_BOOT,
+        _______,  MO(TEST_1), KC_1,       KC_2,     KC_3,    KC_4,     KC_5,      KC_6,     KC_7,     KC_8,     KC_9,     KC_0,     KC_MINS,    KC_EQL,   KC_BSPC,            KC_PGUP,
+        _______,  KC_TAB,     KC_Q,       KC_W,     KC_E,    KC_R,     KC_T,      KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,     KC_LBRC,    KC_RBRC,                      KC_PGDN,
+        _______,  KC_ESC,     KC_A,       KC_S,     KC_D,    KC_F,     KC_G,      KC_H,     KC_J,     KC_K,     KC_L,     KC_SCLN,  KC_QUOT,    KC_NUHS,  KC_ENT,             KC_HOME,
+        _______,  KC_LSFT,    MO(TEST_1), KC_Z,     KC_X,    KC_C,     KC_V,      KC_B,     KC_N,     KC_M,     KC_COMM,  KC_DOT,   KC_SLSH,              KC_RSFT,  KC_UP,
+        _______,  KC_LCTL,    MO(TEST_1), KC_LWIN,  KC_LALT,           KC_SPC,                        KC_SPC, KC_RALT,  MO(TEST_1), KC_RCTL,  KC_LEFT,  KC_DOWN,  KC_RGHT),
 
     [WIN_FN] = LAYOUT_92_iso(
         RGB_TOG,  _______,  KC_BRID,  KC_BRIU,  KC_TASK,  KC_FLXP,  RGB_VAD,   RGB_VAI,  KC_MPRV,  KC_MPLY,  KC_MNXT,  KC_MUTE,  KC_VOLD,    KC_VOLU,  _______,  _______,  RGB_TOG,
@@ -69,12 +69,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______,  _______,  _______,  _______,  _______,            _______,                       _______,            _______,  _______,    _______,  _______,  _______,  _______),
 
     [TEST_1] = LAYOUT_92_iso(
-        QK_BOOT,  _______,  _______,     _______,     _______,     _______,     KC_BRID,      KC_BRIU,     KC_MPRV,     KC_MPLY,     KC_MNXT,     KC_MUTE,     KC_VOLD,          KC_VOLU,       _______,  _______,  QK_BOOT,
-        _______,  _______,  LSFT(KC_1),  LSFT(KC_2),  LSFT(KC_3),  LSFT(KC_4),  LSFT(KC_5),   LSFT(KC_6),  KC_7,        KC_8,        KC_9,        LSFT(KC_0),  LSFT(KC_MINS),    LSFT(KC_EQL),  _______,            _______,
-        _______,  _______,  TUB_1,       TUB_2,       KC_UP,       _______,     _______,      KC_4,        KC_5,        KC_6,        _______,     _______,     _______,          _______,                           _______,
-        _______,  _______,  _______,     KC_LEFT,     KC_DOWN,     KC_RGHT,     _______,      KC_1,        KC_2,        KC_3,        _______,     _______,     _______,          _______,       _______,            _______,
-        _______,  _______,  _______,     _______,     _______,     _______,     _______,      _______,     KC_0,        _______,     _______,     _______,     _______,          _______,       _______,
-        _______,  _______,  _______,     _______,     _______,                  _______,                                _______,                  _______,     _______,          _______,       _______,  _______,  _______),
+        QK_BOOT,  _______,  KC_BRID,     KC_BRIU,       KC_MPRV,     KC_MNXT,     KC_BRID,      KC_BRIU,     KC_MPRV,     KC_MPLY,     KC_MNXT,     KC_MUTE,     KC_VOLD,          KC_VOLU,       _______,  _______,  QK_BOOT,
+        _______,  _______,  KC_7,        KC_8,          KC_9,        KC_0,        LSFT(KC_5),   LSFT(KC_6),  KC_7,        KC_8,        KC_9,        LSFT(KC_0),  LSFT(KC_MINS),    LSFT(KC_EQL),  _______,            _______,
+        _______,  _______,  TUB_1,       TUB_2,         LSFT(KC_8),  LSFT(KC_9),  _______,      KC_4,        KC_5,        KC_6,        _______,     _______,     _______,          _______,                           _______,
+        _______,  _______,  KC_NUBS,     LSFT(KC_NUBS), LCA(KC_NUBS),KC_RGHT,     _______,      KC_1,        KC_2,        KC_3,        _______,     _______,     _______,          _______,       _______,            _______,
+        _______,  _______,  _______,     _______,       _______,     _______,     _______,      _______,     KC_0,        _______,     _______,     _______,     _______,          _______,       _______,
+        _______,  _______,  _______,     _______,       _______,                  _______,                                _______,                  _______,     _______,          _______,       _______,  _______,  _______),
 };
 
 #if defined(ENCODER_MAP_ENABLE)
@@ -157,6 +157,15 @@ bool rgb_matrix_indicators_user(void) {
                 rgb_matrix_set_color_all(RGB_MAGENTA);
                 set_color_split(17,RGB_CHARTREUSE); // Q
                 set_color_split(18,RGB_CHARTREUSE); // W
+                set_color_split(9,RGB_BLUE); // 1
+                set_color_split(10,RGB_BLUE); // 2
+                set_color_split(11,RGB_BLUE); // 3
+                set_color_split(12,RGB_BLUE); // 4
+                set_color_split(19,RGB_GREEN); // E
+                set_color_split(20,RGB_GREEN); // R
+                set_color_split(24,RGB_YELLOW); // A
+                set_color_split(25,RGB_YELLOW); // S
+                set_color_split(26,RGB_YELLOW); // D
                 set_color_split(51,RGB_BLUE); // 7
                 set_color_split(52,RGB_BLUE); // 8
                 set_color_split(53,RGB_BLUE); // 9
