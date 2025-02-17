@@ -71,9 +71,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [TEST_1] = LAYOUT_92_iso(
         QK_BOOT,  _______,  KC_BRID,     KC_BRIU,       KC_MPRV,     KC_MNXT,     KC_BRID,      KC_BRIU,     KC_MPRV,     KC_MPLY,     KC_MNXT,     KC_MUTE,     KC_VOLD,          KC_VOLU,       _______,  _______,  QK_BOOT,
-        _______,  _______,  KC_7,        KC_8,          KC_9,        KC_0,        LSFT(KC_5),   LSFT(KC_6),  KC_7,        KC_8,        KC_9,        LSFT(KC_0),  LSFT(KC_MINS),    LSFT(KC_EQL),  _______,            _______,
+        _______,  _______,  KC_7,        KC_8,          KC_9,        KC_0,        LSFT(KC_5),   LSFT(KC_6),  KC_7,        KC_8,        KC_9,        LSFT(KC_0),  LALT(KC_INS),     LSFT(KC_EQL),  _______,            _______,
         _______,  _______,  TUB_1,       TUB_2,         LSFT(KC_8),  LSFT(KC_9),  _______,      KC_4,        KC_5,        KC_6,        _______,     _______,     _______,          _______,                           _______,
-        _______,  _______,  KC_NUBS,     LSFT(KC_NUBS), LCA(KC_NUBS),LSFT(KC_7),  _______,      KC_1,        KC_2,        KC_3,        ARROW_FUNC,     _______,     _______,          _______,       _______,            _______,
+        _______,  _______,  KC_NUBS,     LSFT(KC_NUBS), LCA(KC_NUBS),LSFT(KC_7),  _______,      KC_1,        KC_2,        KC_3,        ARROW_FUNC,  _______,     _______,          _______,       _______,            _______,
         _______,  _______,  _______,     _______,       _______,     _______,     _______,      _______,     KC_0,        _______,     _______,     _______,     _______,          _______,       _______,
         _______,  _______,  _______,     _______,       _______,                  _______,                                _______,                  _______,     _______,          _______,       _______,  _______,  _______),
 };
@@ -171,6 +171,7 @@ bool rgb_matrix_indicators_user(void) {
                 set_color_split(51,RGB_BLUE); // 7
                 set_color_split(52,RGB_BLUE); // 8
                 set_color_split(53,RGB_BLUE); // 9
+                set_color_split(55,RGB_YELLOW); // +
                 set_color_split(59,RGB_BLUE); // Y
                 set_color_split(60,RGB_BLUE); // U
                 set_color_split(61,RGB_BLUE); // I
