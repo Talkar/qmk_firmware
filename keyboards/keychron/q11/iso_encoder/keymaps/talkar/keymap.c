@@ -27,7 +27,8 @@ enum layers{
 
 enum custom_keycodes {
     TUB_1 = SAFE_RANGE,
-    TUB_2
+    TUB_2,
+    ARROW_FUNC
 };
 
 #define KC_TASK LGUI(KC_TAB)
@@ -72,7 +73,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         QK_BOOT,  _______,  KC_BRID,     KC_BRIU,       KC_MPRV,     KC_MNXT,     KC_BRID,      KC_BRIU,     KC_MPRV,     KC_MPLY,     KC_MNXT,     KC_MUTE,     KC_VOLD,          KC_VOLU,       _______,  _______,  QK_BOOT,
         _______,  _______,  KC_7,        KC_8,          KC_9,        KC_0,        LSFT(KC_5),   LSFT(KC_6),  KC_7,        KC_8,        KC_9,        LSFT(KC_0),  LSFT(KC_MINS),    LSFT(KC_EQL),  _______,            _______,
         _______,  _______,  TUB_1,       TUB_2,         LSFT(KC_8),  LSFT(KC_9),  _______,      KC_4,        KC_5,        KC_6,        _______,     _______,     _______,          _______,                           _______,
-        _______,  _______,  KC_NUBS,     LSFT(KC_NUBS), LCA(KC_NUBS),LSFT(KC_7),     _______,      KC_1,        KC_2,        KC_3,        _______,     _______,     _______,          _______,       _______,            _______,
+        _______,  _______,  KC_NUBS,     LSFT(KC_NUBS), LCA(KC_NUBS),LSFT(KC_7),  _______,      KC_1,        KC_2,        KC_3,        ARROW_FUNC,     _______,     _______,          _______,       _______,            _______,
         _______,  _______,  _______,     _______,       _______,     _______,     _______,      _______,     KC_0,        _______,     _______,     _______,     _______,          _______,       _______,
         _______,  _______,  _______,     _______,       _______,                  _______,                                _______,                  _______,     _______,          _______,       _______,  _______,  _______),
 };
@@ -176,6 +177,7 @@ bool rgb_matrix_indicators_user(void) {
                 set_color_split(67,RGB_BLUE); // H
                 set_color_split(68,RGB_BLUE); // J
                 set_color_split(69,RGB_BLUE); // K
+                set_color_split(70,RGB_GREEN); // L
                 set_color_split(76,RGB_BLUE); // N
                 break;
             default: //  for any other layers, or the default layer
@@ -202,8 +204,9 @@ void tap_with_altgr(uint16_t keycode)
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case TUB_1: if(record->event.pressed == false){ tap_with_altgr(KC_7); } return false;
-        case TUB_2: if(record->event.pressed == false){ tap_with_altgr(KC_0); } return false;
+        case TUB_1: if(record->event.pressed == false) { SEND_STRING(SS_ALGR(SS_TAP(X_7))); } return false;
+        case TUB_2: if(record->event.pressed == false){ SEND_STRING(SS_ALGR(SS_TAP(X_0))); } return false;
+        case ARROW_FUNC: if(record->event.pressed == false) { SEND_STRING(SS_LSFT(SS_TAP(X_8) SS_TAP(X_9) SS_TAP(X_0) SS_TAP(X_NUBS))); } return false;
     }
 #ifdef CONSOLE_ENABLE
     uprintf("KL: kc: 0x%04X, col: %2u, row: %2u, pressed: %u, time: %5u, int: %u, count: %u\n", keycode, record->event.key.col, record->event.key.row, record->event.pressed, record->event.time, record->tap.interrupted, record->tap.count);
