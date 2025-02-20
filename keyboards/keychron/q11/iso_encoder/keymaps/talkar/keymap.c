@@ -29,7 +29,8 @@ enum custom_keycodes {
     TUB_1 = SAFE_RANGE,
     TUB_2,
     ARROW_FUNC,
-    SPECIAL_E
+    SPECIAL_E,
+    SPECIAL_I
 };
 
 #define KC_TASK LGUI(KC_TAB)
@@ -49,7 +50,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [GAMING_FN] = LAYOUT_92_iso(
         RGB_TOG,  _______,  KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,     KC_F6,  KC_MPRV,  KC_MPLY,  KC_MNXT,  KC_MUTE,  KC_VOLD,    KC_VOLU,   _______,  _______,  _______,
         _______,  _______,  KC_7,     KC_8,     KC_9,     KC_0,     KC_MINS,   KC_EQL,   KC_7,     KC_8,     KC_9,     _______,  _______,    _______,  _______,            _______,
-        _______,  _______,  KC_P,     KC_O,     KC_I,     KC_U,     KC_Y,      KC_4,     KC_5,     KC_6,     _______,  _______,  _______,    _______,                      _______,
+        _______,  _______,  KC_P,     KC_O,     SPECIAL_I,     KC_U,     KC_Y,      KC_4,     KC_5,     KC_6,     _______,  _______,  _______,    _______,                      _______,
         _______,  KC_CAPS,  KC_SCLN,  KC_L,     KC_K,     KC_J,     KC_H,      KC_1,     KC_2,     KC_3,     _______,  _______,  _______,    _______,  _______,            _______,
         _______,  _______,  _______,  KC_SLSH,  KC_DOT,   KC_COMM,  KC_M,      KC_N,     KC_0,     _______,  _______,  _______,  _______,              _______,  _______,
         _______,  _______,  _______,  _______,  _______,  KC_CAPS,             _______,            _______,  _______,    _______,  _______,  _______,  _______),
@@ -219,6 +220,21 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 else
                 {
                     tap_code16(LSFT(KC_8));
+                }
+            }
+            return false;
+        case SPECIAL_I:
+            if(record->event.pressed ==false)
+            {
+                if(is_pressed(KC_LSFT))
+                {
+                    unregister_code(KC_LSFT);
+                    tap_code(KC_ENT);
+                    register_code(KC_LSFT);
+                }
+                else
+                {
+                    tap_code16(KC_I);
                 }
             }
             return false;
