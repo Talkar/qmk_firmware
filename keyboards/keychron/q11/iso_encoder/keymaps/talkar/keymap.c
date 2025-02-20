@@ -209,7 +209,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case TUB_1: if(record->event.pressed == false) { SEND_STRING(SS_ALGR(SS_TAP(X_7))); } return false;
         case TUB_2: if(record->event.pressed == false){ SEND_STRING(SS_ALGR(SS_TAP(X_0))); } return false;
         case ARROW_FUNC: if(record->event.pressed == false) { SEND_STRING(SS_LSFT(SS_TAP(X_8) SS_TAP(X_9) SS_TAP(X_0) SS_TAP(X_NUBS))); } return false;
-        case SPECIAL_E: if(record->event.pressed ==false) { tap_code16(LSFT(KC_8)) } return false;
+        case SPECIAL_E: if(record->event.pressed ==false) { tap_code16(LSFT(KC_8)); } return false;
     }
 #ifdef CONSOLE_ENABLE
     uprintf("KL: kc: 0x%04X, col: %2u, row: %2u, pressed: %u, time: %5u, int: %u, count: %u\n", keycode, record->event.key.col, record->event.key.row, record->event.pressed, record->event.time, record->tap.interrupted, record->tap.count);
