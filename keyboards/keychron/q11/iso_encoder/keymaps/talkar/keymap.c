@@ -48,7 +48,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [GAMING_FN] = LAYOUT_92_iso(
         XXXXXXX,  XXXXXXX,  KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,     KC_F6,                       KC_MPRV,  KC_MPLY,  KC_MNXT,  KC_MUTE,  KC_VOLD,    KC_VOLU,   XXXXXXX,  XXXXXXX,  XXXXXXX,
         XXXXXXX,  XXXXXXX,  KC_7,     KC_8,     KC_9,     KC_0,     KC_MINS,   KC_EQL,                       KC_7,     KC_8,     KC_9,     XXXXXXX,  XXXXXXX,    XXXXXXX,  XXXXXXX,            XXXXXXX,
-        XXXXXXX,  XXXXXXX,  KC_P,     KC_O,     SPECIAL_I,KC_U,     KC_Y,      KC_4,                         KC_5,     KC_6,     XXXXXXX,  XXXXXXX,  XXXXXXX,    XXXXXXX,                      XXXXXXX,
+        XXXXXXX,  KC_F5,  KC_P,     KC_O,     SPECIAL_I,KC_U,     KC_Y,      KC_4,                         KC_5,     KC_6,     XXXXXXX,  XXXXXXX,  XXXXXXX,    XXXXXXX,                      XXXXXXX,
         XXXXXXX,  KC_CAPS,  KC_SCLN,  KC_L,     KC_K,     KC_J,     KC_H,      KC_1,                         KC_2,     KC_3,     XXXXXXX,  XXXXXXX,  XXXXXXX,    XXXXXXX,  XXXXXXX,            XXXXXXX,
         XXXXXXX,  XXXXXXX,  XXXXXXX,  KC_SLSH,  KC_DOT,   KC_COMM,  KC_M,      KC_N,                         KC_0,     XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,              XXXXXXX,  XXXXXXX,
         XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,                                                    XXXXXXX, XXXXXXX,  XXXXXXX,     XXXXXXX, XXXXXXX,  XXXXXXX,  XXXXXXX),
@@ -120,6 +120,7 @@ bool rgb_matrix_indicators_user(void) {
                 set_color_split(19,RGB_RED); // E
                 set_color_split(20,RGB_RED); // R
                 set_color_split(21,RGB_RED); // T
+                set_color_split(23,RGB_MAGENTA); // CAPS
                 set_color_split(24,RGB_RED); // A
                 set_color_split(25,RGB_RED); // S
                 set_color_split(26,RGB_RED); // D
