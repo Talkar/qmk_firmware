@@ -200,10 +200,6 @@ void tap_with_altgr(uint16_t keycode)
     if(apply_alt){ unregister_code(KC_RALT); }
 }
 
-bool is_pressed(uint16_t mod_keycode){
-  return (get_mods() & (MOD_BIT(mod_keycode)));
-}
-
 // Example keymap or user function where you want to print the indices
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
