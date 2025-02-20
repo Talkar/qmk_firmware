@@ -20,15 +20,13 @@
 enum layers{
     GAMING_BASE,
     GAMING_FN,
-    WIN_BASE,
-    WIN_FN,
-    TEST_1
+    DEV_BASE,
+    DEV_FN
 };
 
 enum custom_keycodes {
     TUB_1 = SAFE_RANGE,
     TUB_2,
-    ARROW_FUNC,
     SPECIAL_E,
     SPECIAL_I
 };
@@ -40,53 +38,44 @@ enum custom_keycodes {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [GAMING_BASE] = LAYOUT_92_iso(
-        KC_MUTE,  KC_CAPS,  KC_F1,         KC_F2,    KC_F3,   KC_F4,    KC_F5,     KC_F6,    KC_F7,    KC_F8,    KC_F9,       KC_F10,   KC_F11,     KC_F12,   KC_INS,   KC_DEL,   KC_MUTE,
-        _______,  KC_GRV,   KC_1,          KC_2,     KC_3,    KC_4,     KC_5,      KC_6,     KC_7,     KC_8,     KC_9,        KC_0,     KC_MINS,    KC_EQL,   KC_BSPC,            KC_PGUP,
-        _______,  KC_TAB,   KC_Q,          KC_W,     KC_E,    KC_R,     KC_T,      KC_Y,     KC_U,     KC_I,     KC_O,        KC_P,     KC_LBRC,    KC_RBRC,                      KC_PGDN,
-        _______,  KC_ESC,   KC_A,          KC_S,     KC_D,    KC_F,     KC_G,      KC_H,     KC_J,     KC_K,     KC_L,        KC_SCLN,  KC_QUOT,    KC_NUHS,  KC_ENT,             KC_HOME,
-        _______,  KC_LSFT,  MO(GAMING_FN), KC_Z,     KC_X,    KC_C,     KC_V,      KC_B,     KC_N,     KC_M,     KC_COMM,     KC_DOT,   KC_SLSH,              KC_RSFT,  KC_UP,
-        _______,  KC_LCTL,  MO(GAMING_FN), KC_LWIN,  KC_LALT, KC_SPC,              LT(GAMING_FN, KC_SPC), KC_RALT,  MO(GAMING_FN), KC_RCTL,  KC_LEFT,  KC_DOWN,  KC_RGHT),
+        KC_MUTE,  KC_CAPS,  KC_F1,         KC_F2,    KC_F3,   KC_F4,    KC_F5,     KC_F6,                    KC_F7,    KC_F8,    KC_F9,       KC_F10,   KC_F11,     KC_F12,   KC_INS,   KC_DEL,   KC_MUTE,
+        _______,  KC_GRV,   KC_1,          KC_2,     KC_3,    KC_4,     KC_5,      KC_6,                     KC_7,     KC_8,     KC_9,        KC_0,     KC_MINS,    KC_EQL,   KC_BSPC,            KC_PGUP,
+        _______,  KC_TAB,   KC_Q,          KC_W,     KC_E,    KC_R,     KC_T,      KC_Y,                     KC_U,     KC_I,     KC_O,        KC_P,     KC_LBRC,    KC_RBRC,                      KC_PGDN,
+        _______,  KC_ESC,   KC_A,          KC_S,     KC_D,    KC_F,     KC_G,      KC_H,                     KC_J,     KC_K,     KC_L,        KC_SCLN,  KC_QUOT,    KC_NUHS,  KC_ENT,             KC_HOME,
+        _______,  KC_LSFT,  MO(GAMING_FN), KC_Z,     KC_X,    KC_C,     KC_V,      KC_B,                     KC_N,     KC_M,     KC_COMM,     KC_DOT,   KC_SLSH,              KC_RSFT,  KC_UP,
+        _______,  KC_LCTL,  MO(GAMING_FN), KC_LWIN,  KC_LALT, KC_SPC,                                        LT(GAMING_FN, KC_SPC), KC_RALT,  MO(GAMING_FN), KC_RCTL,  KC_LEFT,  KC_DOWN,  KC_RGHT),
 
     [GAMING_FN] = LAYOUT_92_iso(
-        RGB_TOG,  _______,  KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,     KC_F6,  KC_MPRV,  KC_MPLY,  KC_MNXT,  KC_MUTE,  KC_VOLD,    KC_VOLU,   _______,  _______,  _______,
-        _______,  _______,  KC_7,     KC_8,     KC_9,     KC_0,     KC_MINS,   KC_EQL,   KC_7,     KC_8,     KC_9,     _______,  _______,    _______,  _______,            _______,
-        _______,  _______,  KC_P,     KC_O,     SPECIAL_I,     KC_U,     KC_Y,      KC_4,     KC_5,     KC_6,     _______,  _______,  _______,    _______,                      _______,
-        _______,  KC_CAPS,  KC_SCLN,  KC_L,     KC_K,     KC_J,     KC_H,      KC_1,     KC_2,     KC_3,     _______,  _______,  _______,    _______,  _______,            _______,
-        _______,  _______,  _______,  KC_SLSH,  KC_DOT,   KC_COMM,  KC_M,      KC_N,     KC_0,     _______,  _______,  _______,  _______,              _______,  _______,
-        _______,  _______,  _______,  _______,  _______,  KC_CAPS,             _______,            _______,  _______,    _______,  _______,  _______,  _______),
+        XXXXXXX,  XXXXXXX,  KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,     KC_F6,                       KC_MPRV,  KC_MPLY,  KC_MNXT,  KC_MUTE,  KC_VOLD,    KC_VOLU,   XXXXXXX,  XXXXXXX,  XXXXXXX,
+        XXXXXXX,  XXXXXXX,  KC_7,     KC_8,     KC_9,     KC_0,     KC_MINS,   KC_EQL,                       KC_7,     KC_8,     KC_9,     XXXXXXX,  XXXXXXX,    XXXXXXX,  XXXXXXX,            XXXXXXX,
+        XXXXXXX,  XXXXXXX,  KC_P,     KC_O,     SPECIAL_I,KC_U,     KC_Y,      KC_4,                         KC_5,     KC_6,     XXXXXXX,  XXXXXXX,  XXXXXXX,    XXXXXXX,                      XXXXXXX,
+        XXXXXXX,  KC_CAPS,  KC_SCLN,  KC_L,     KC_K,     KC_J,     KC_H,      KC_1,                         KC_2,     KC_3,     XXXXXXX,  XXXXXXX,  XXXXXXX,    XXXXXXX,  XXXXXXX,            XXXXXXX,
+        XXXXXXX,  XXXXXXX,  XXXXXXX,  KC_SLSH,  KC_DOT,   KC_COMM,  KC_M,      KC_N,                         KC_0,     XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,              XXXXXXX,  XXXXXXX,
+        XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,                                                    XXXXXXX, XXXXXXX,  XXXXXXX,     XXXXXXX, XXXXXXX,  XXXXXXX,  XXXXXXX),
 
-    [WIN_BASE] = LAYOUT_92_iso(
-        QK_BOOT,  KC_CAPS,    KC_F1,      KC_F2,    KC_F3,   KC_F4,    KC_F5,     KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10,   KC_F11,     KC_F12,   KC_INS,   KC_DEL,   QK_BOOT,
-        _______,  MO(TEST_1), KC_1,       KC_2,     KC_3,    KC_4,     KC_5,      KC_6,     KC_7,     KC_8,     KC_9,     KC_0,     KC_MINS,    KC_EQL,   KC_BSPC,            KC_PGUP,
-        _______,  KC_TAB,     KC_Q,       KC_W,     KC_E,    KC_R,     KC_T,      KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,     KC_LBRC,    KC_RBRC,                      KC_PGDN,
-        _______,  KC_ESC,     KC_A,       KC_S,     KC_D,    KC_F,     KC_G,      KC_H,     KC_J,     KC_K,     KC_L,     KC_SCLN,  KC_QUOT,    KC_NUHS,  KC_ENT,             KC_HOME,
-        _______,  KC_LSFT,    MO(TEST_1), KC_Z,     KC_X,    KC_C,     KC_V,      KC_B,     KC_N,     KC_M,     KC_COMM,  KC_DOT,   KC_SLSH,              KC_RSFT,  KC_UP,
-        _______,  KC_LCTL,    MO(TEST_1), KC_LWIN,  KC_LALT,           KC_SPC,                        KC_SPC, KC_RALT,  MO(TEST_1), KC_RCTL,  KC_LEFT,  KC_DOWN,  KC_RGHT),
+    [DEV_BASE] = LAYOUT_92_iso(
+        QK_BOOT,  KC_CAPS,    KC_F1,      KC_F2,    KC_F3,   KC_F4,    KC_F5,     KC_F6,                    KC_F7,    KC_F8,    KC_F9,    KC_F10,   KC_F11,     KC_F12,   KC_INS,   KC_DEL,   QK_BOOT,
+        _______,  MO(DEV_FN), KC_1,       KC_2,     KC_3,    KC_4,     KC_5,      KC_6,                     KC_7,     KC_8,     KC_9,     KC_0,     KC_MINS,    KC_EQL,   KC_BSPC,            KC_PGUP,
+        _______,  KC_TAB,     KC_Q,       KC_W,     KC_E,    KC_R,     KC_T,      KC_Y,                     KC_U,     KC_I,     KC_O,     KC_P,     KC_LBRC,    KC_RBRC,                      KC_PGDN,
+        _______,  KC_ESC,     KC_A,       KC_S,     KC_D,    KC_F,     KC_G,      KC_H,                     KC_J,     KC_K,     KC_L,     KC_SCLN,  KC_QUOT,    KC_NUHS,  KC_ENT,             KC_HOME,
+        _______,  KC_LSFT,    MO(DEV_FN), KC_Z,     KC_X,    KC_C,     KC_V,      KC_B,                     KC_N,     KC_M,     KC_COMM,  KC_DOT,   KC_SLSH,              KC_RSFT,  KC_UP,
+        _______,  KC_LCTL,    MO(DEV_FN), KC_LWIN,  KC_LALT,           KC_SPC,                                        KC_SPC, KC_RALT,  MO(DEV_FN), KC_RCTL,  KC_LEFT,  KC_DOWN,  KC_RGHT),
 
-    [WIN_FN] = LAYOUT_92_iso(
-        RGB_TOG,  _______,  KC_BRID,  KC_BRIU,  KC_TASK,  KC_FLXP,  RGB_VAD,   RGB_VAI,  KC_MPRV,  KC_MPLY,  KC_MNXT,  KC_MUTE,  KC_VOLD,    KC_VOLU,  _______,  _______,  RGB_TOG,
-        _______,  _______,  _______,  _______,  _______,  _______,  _______,   _______,  _______,  _______,  _______,  _______,  _______,    _______,  _______,            _______,
-        _______,  RGB_TOG,  RGB_MOD,  RGB_VAI,  RGB_HUI,  RGB_SAI,  RGB_SPI,   _______,  _______,  _______,  _______,  _______,  _______,    _______,                      _______,
-        _______,  _______,  RGB_RMOD, RGB_VAD,  RGB_HUD,  RGB_SAD,  RGB_SPD,   _______,  _______,  _______,  _______,  _______,  _______,    _______,  _______,            _______,
-        _______,  _______,  _______,  _______,  _______,  _______,  _______,   _______,  NK_TOGG,  _______,  _______,  _______,  _______,              _______,  _______,
-        _______,  _______,  _______,  _______,  _______,            _______,                       _______,            _______,  _______,    _______,  _______,  _______,  _______),
-
-    [TEST_1] = LAYOUT_92_iso(
-        QK_BOOT,  _______,  KC_BRID,     KC_BRIU,       KC_MPRV,     KC_MNXT,     KC_BRID,      KC_BRIU,     KC_MPRV,     KC_MPLY,     KC_MNXT,     KC_MUTE,     KC_VOLD,          KC_VOLU,       _______,  _______,  QK_BOOT,
-        _______,  _______,  KC_7,        KC_8,          KC_9,        KC_0,        LSFT(KC_5),   LSFT(KC_6),  KC_7,        KC_8,        KC_9,        LSFT(KC_0),  LALT(KC_INS),     LSFT(KC_EQL),  _______,            _______,
-        _______,  _______,  TUB_1,       TUB_2,         SPECIAL_E,  LSFT(KC_9),  _______,      KC_4,        KC_5,        KC_6,        _______,     _______,     _______,          _______,                           _______,
-        _______,  _______,  KC_NUBS,     LSFT(KC_NUBS), LCA(KC_NUBS),LSFT(KC_7),  _______,      KC_1,        KC_2,        KC_3,        ARROW_FUNC,  _______,     _______,          _______,       _______,            _______,
-        _______,  _______,  _______,     _______,       _______,     _______,     _______,      _______,     KC_0,        _______,     _______,     _______,     _______,          _______,       _______,
-        _______,  _______,  _______,     _______,       _______,                  _______,                                _______,                  _______,     _______,          _______,       _______,  _______,  _______),
+    [DEV_FN] = LAYOUT_92_iso(
+        QK_BOOT,  _______,  KC_BRID,     KC_BRIU,       KC_MPRV,     KC_MNXT,     KC_BRID,                  KC_BRIU,     KC_MPRV,     KC_MPLY,     KC_MNXT,     KC_MUTE,     KC_VOLD,          KC_VOLU,       _______,  _______,  QK_BOOT,
+        _______,  _______,  KC_7,        KC_8,          KC_9,        KC_0,        LSFT(KC_5),               LSFT(KC_6),  KC_7,        KC_8,        KC_9,        LSFT(KC_0),  LALT(KC_INS),     LSFT(KC_EQL),  _______,            _______,
+        _______,  _______,  TUB_1,       TUB_2,         SPECIAL_E,  LSFT(KC_9),  _______,                   KC_4,        KC_5,        KC_6,        _______,     _______,     _______,          _______,                           _______,
+        _______,  _______,  KC_NUBS,     LSFT(KC_NUBS), LCA(KC_NUBS),LSFT(KC_7),  _______,                  KC_1,        KC_2,        KC_3,        _______,  _______,     _______,          _______,       _______,            _______,
+        _______,  _______,  _______,     _______,       _______,     _______,     _______,                  _______,     KC_0,        _______,     _______,     _______,     _______,          _______,       _______,
+        _______,  _______,  _______,     _______,       _______,                  _______,                                            _______,                  _______,     _______,          _______,       _______,  _______,  _______),
 };
 
 #if defined(ENCODER_MAP_ENABLE)
 const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
     [GAMING_BASE] = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_VOLD, KC_VOLU) },
     [GAMING_FN]   = { ENCODER_CCW_CW(RGB_VAD, RGB_VAI), ENCODER_CCW_CW(RGB_VAD, RGB_VAI) },
-    [WIN_BASE] = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_VOLD, KC_VOLU) },
-    [WIN_FN]   = { ENCODER_CCW_CW(RGB_VAD, RGB_VAI), ENCODER_CCW_CW(RGB_VAD, RGB_VAI) },
-    [TEST_1]   = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_VOLD, KC_VOLU) }
+    [DEV_BASE] = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_VOLD, KC_VOLU) },
+    [DEV_FN]   = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_VOLD, KC_VOLU) }
 };
 #endif // ENCODER_MAP_ENABLE
 
@@ -153,10 +142,10 @@ bool rgb_matrix_indicators_user(void) {
                 set_color_split(76,RGB_BLUE); // N
 
                 break;
-            case WIN_BASE:
+            case DEV_BASE:
                 rgb_matrix_set_color_all(0,220,30);
                 break;
-            case TEST_1:
+            case DEV_FN:
                 rgb_matrix_set_color_all(RGB_MAGENTA);
                 set_color_split(17,RGB_CHARTREUSE); // Q
                 set_color_split(18,RGB_CHARTREUSE); // W
@@ -180,7 +169,6 @@ bool rgb_matrix_indicators_user(void) {
                 set_color_split(67,RGB_BLUE); // H
                 set_color_split(68,RGB_BLUE); // J
                 set_color_split(69,RGB_BLUE); // K
-                set_color_split(70,RGB_GREEN); // L
                 set_color_split(76,RGB_BLUE); // N
                 break;
             default: //  for any other layers, or the default layer
@@ -207,7 +195,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case TUB_1: if(record->event.pressed == false) { SEND_STRING(SS_ALGR(SS_TAP(X_7))); } return false;
         case TUB_2: if(record->event.pressed == false){ SEND_STRING(SS_ALGR(SS_TAP(X_0))); } return false;
-        case ARROW_FUNC: if(record->event.pressed == false) { SEND_STRING(SS_LSFT(SS_TAP(X_8) SS_TAP(X_9) SS_TAP(X_0) SS_TAP(X_NUBS))); } return false;
         case SPECIAL_E:
             if(record->event.pressed ==false)
             {
