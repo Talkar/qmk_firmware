@@ -212,9 +212,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             {
                 if(is_pressed(KC_LSFT))
                 {
-                    unregister(KC_LSFT);
+                    unregister_code(KC_LSFT);
                     tap_code(KC_ENT);
-                    register(KC_LSFT);
+                    register_code(KC_LSFT);
                 }
                 else
                 {
