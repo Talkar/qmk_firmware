@@ -57,15 +57,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______,  MO(DEV_FN), KC_1,       KC_2,     KC_3,    KC_4,     KC_5,      KC_6,                     KC_7,     KC_8,     KC_9,     KC_0,     KC_MINS,    KC_EQL,   KC_BSPC,            KC_PGUP,
         _______,  KC_TAB,     KC_Q,       KC_W,     KC_E,    KC_R,     KC_T,      KC_Y,                     KC_U,     KC_I,     KC_O,     KC_P,     KC_LBRC,    KC_RBRC,                      KC_PGDN,
         _______,  KC_ESC,     KC_A,       KC_S,     KC_D,    KC_F,     KC_G,      KC_H,                     KC_J,     KC_K,     KC_L,     KC_SCLN,  KC_QUOT,    KC_NUHS,  KC_ENT,             KC_HOME,
-        _______,  KC_LSFT,    MO(DEV_FN), KC_Z,     KC_X,    KC_C,     KC_V,      KC_B,                     KC_N,     KC_M,     KC_COMM,  KC_DOT,   KC_SLSH,              KC_RSFT,  KC_UP,
+        _______,  KC_LSFT,    MO(DEV_FN), KC_Z,     KC_X,    KC_C,     KC_V,      KC_B,                     KC_N,     KC_M,     KC_COMM,  KC_DOT,   KC_SLSH,              LSFT(KC_COMM),  KC_UP,
         _______,  KC_LCTL,    MO(DEV_FN), KC_LWIN,  KC_LALT,           KC_SPC,                                        KC_SPC, KC_RALT,  MO(DEV_FN), KC_RCTL,  KC_LEFT,  KC_DOWN,  KC_RGHT),
 
     [DEV_FN] = LAYOUT_92_iso(
         QK_BOOT,  _______,  KC_BRID,     KC_BRIU,       KC_MPRV,     KC_MNXT,     KC_BRID,                  KC_BRIU,     KC_MPRV,     KC_MPLY,     KC_MNXT,     KC_MUTE,     KC_VOLD,          KC_VOLU,       _______,  _______,  QK_BOOT,
         _______,  _______,  KC_7,        KC_8,          KC_9,        KC_0,        LSFT(KC_5),               LSFT(KC_6),  KC_7,        KC_8,        KC_9,        LSFT(KC_0),  LALT(KC_INS),     LSFT(KC_EQL),  _______,            _______,
-        _______,  _______,  TUB_1,       TUB_2,         SPECIAL_E,  LSFT(KC_9),  _______,                   KC_4,        KC_5,        KC_6,        _______,     _______,     _______,          _______,                           _______,
+        _______,  _______,  TUB_1,       TUB_2,         SPECIAL_E,   LSFT(KC_9),  _______,                   KC_4,        KC_5,        KC_6,        _______,     _______,     _______,          _______,                           _______,
         _______,  _______,  KC_NUBS,     LSFT(KC_NUBS), LCA(KC_NUBS),LSFT(KC_7),  _______,                  KC_1,        KC_2,        KC_3,        _______,  _______,     _______,          _______,       _______,            _______,
-        _______,  _______,  _______,     _______,       _______,     _______,     _______,                  _______,     KC_0,        _______,     _______,     _______,     _______,          _______,       _______,
+        _______,  _______,  _______,     LCA(KC_8),   LCA(KC_9),     _______,     _______, _______,         KC_0,        _______,     _______,     _______,     _______,          _______,       _______,
         _______,  _______,  _______,     _______,       _______,                  _______,                                            _______,                  _______,     _______,          _______,       _______,  _______,  _______),
 };
 
@@ -159,6 +159,8 @@ bool rgb_matrix_indicators_user(void) {
                 set_color_split(25,RGB_YELLOW); // S
                 set_color_split(26,RGB_TEAL); // D
                 set_color_split(27,RGB_TEAL); // F
+                set_color_split(32,RGB_CHARTREUSE); // Z
+                set_color_split(33,RGB_CHARTREUSE); // X
                 set_color_split(51,RGB_BLUE); // 7
                 set_color_split(52,RGB_BLUE); // 8
                 set_color_split(53,RGB_BLUE); // 9
