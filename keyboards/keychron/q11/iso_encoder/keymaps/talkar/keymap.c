@@ -67,13 +67,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______,  KC_TAB,     KC_Q,       KC_W,     KC_F,    KC_P,     KC_B,                                KC_J,     KC_L,     KC_U,     KC_Y,     LSFT(KC_COMM), KC_LBRC,    KC_RBRC,         KC_PGDN,
         _______,  KC_ESC,     KC_A,       KC_R,     KC_S,    KC_T,     KC_G,                                KC_M,     KC_N,     KC_E,     KC_I,  KC_O,    KC_SCLN, KC_QUOT, KC_ENT,           KC_HOME,
         _______,  KC_LSFT,    MO(DEV_FN), KC_Z,       KC_X,     KC_C,    KC_D,     KC_V,                  KC_SLSH,  KC_K,     KC_H,  KC_COMM,   KC_DOT,              LSFT(KC_COMM),  KC_UP,
-        _______,  KC_LCTL,    MO(DEV_FN), KC_LWIN,  KC_LALT,           KC_SPC,                                        KC_SPC, KC_RALT,  MO(DEV_FN), KC_RCTL,  KC_LEFT,  KC_DOWN,  KC_RGHT),
+        _______,  KC_LCTL,    MO(DEV_FN), KC_LWIN,  KC_LALT,           KC_SPC,                                        LT(DEV_FN, KC_SPC), KC_RALT,  MO(DEV_FN), KC_RCTL,  KC_LEFT,  KC_DOWN,  KC_RGHT),
 
     [DEV_FN] = LAYOUT_92_iso(
         QK_BOOT,  _______,  KC_BRID,     KC_BRIU,       KC_MPRV,     KC_MNXT,     KC_BRID,                  KC_BRIU,     KC_MPRV,     KC_MPLY,     KC_MNXT,     KC_MUTE,     KC_VOLD,          KC_VOLU,       _______,  _______,  QK_BOOT,
         _______,  _______,  KC_7,        KC_8,          KC_9,        KC_0,        LSFT(KC_5),               LSFT(KC_6),  KC_7,        KC_8,        KC_9,        LSFT(KC_0),  LALT(KC_INS),     LSFT(KC_EQL),  _______,            _______,
-        _______,  _______,  TUB_1,       TUB_2,         SPECIAL_E,   LSFT(KC_9),  _______,                   KC_4,        KC_5,        KC_6,        _______,     _______,     _______,          _______,                           _______,
-        _______,  _______,  KC_NUBS,     LSFT(KC_NUBS), LCA(KC_NUBS),LSFT(KC_7),  _______,                  KC_1,        KC_2,        KC_3,        _______,  _______,     _______,          _______,       _______,            _______,
+        _______,  _______,  TUB_1,       TUB_2,         SPECIAL_E,   LSFT(KC_9),  _______,                   KC_4,        KC_5,        KC_UP,        _______,     _______,     _______,          _______,                           _______,
+        _______,  _______,  KC_NUBS,     LSFT(KC_NUBS), LCA(KC_NUBS),LSFT(KC_7),  _______,                  KC_1,        KC_LEFT,        KC_DOWN,  KC_RIGHT,  _______,     _______,          _______,       _______,            _______,
         _______,  _______,  _______,     LCA(KC_8),   LCA(KC_9),     _______,     _______, _______,         KC_0,        _______,     _______,     _______,     _______,          _______,       _______,
         _______,  _______,  _______,     _______,       _______,                  _______,                                            _______,                  _______,     _______,          _______,       _______,  _______,  _______),
 };
