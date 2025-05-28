@@ -72,9 +72,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [DEV_FN] = LAYOUT_92_iso(
         QK_BOOT,  _______,  KC_BRID,     KC_BRIU,       KC_MPRV,     KC_MNXT,     KC_BRID,                  KC_BRIU,     KC_MPRV,     KC_MPLY,     KC_MNXT,     KC_MUTE,     KC_VOLD,          KC_VOLU,       _______,  _______,  QK_BOOT,
         _______,  _______,  KC_7,        KC_8,          KC_9,        KC_0,        LSFT(KC_5),               LSFT(KC_6),  KC_7,        KC_8,        KC_9,        LSFT(KC_0),  LALT(KC_INS),     LSFT(KC_EQL),  _______,            _______,
-        _______,  _______,  TUB_1,       TUB_2,         SPECIAL_E,   LSFT(KC_9),  _______,                   KC_4,        KC_5,        KC_UP,        _______,     _______,     _______,          _______,                           _______,
-        _______,  _______,  KC_NUBS,     LSFT(KC_NUBS), LCA(KC_NUBS),LSFT(KC_7),  _______,                  KC_1,        KC_LEFT,        KC_DOWN,  KC_RIGHT,  _______,     _______,          _______,       _______,            _______,
-        _______,  _______,  _______,     LCA(KC_8),   LCA(KC_9),     _______,     _______, _______,         KC_0,        _______,     _______,     _______,     _______,          _______,       _______,
+        _______,  _______,  TUB_1,       TUB_2,         SPECIAL_E,   LSFT(KC_9),  _______,                  KC_PGDN,        KC_END,   KC_HOME,        KC_PGUP,     _______,     _______,          _______,                           _______,
+        _______,  _______,  KC_NUBS,     LSFT(KC_NUBS), LCA(KC_NUBS),LSFT(KC_7),  _______,                  KC_LEFT,        KC_DOWN,  KC_UP,      KC_RIGHT,  _______,     _______,          _______,       _______,            _______,
+        _______,  _______,  _______,     LCA(KC_8),   LCA(KC_9),     _______,     _______, _______,         _______,        _______,     _______,     _______,     _______,          _______,       _______,
         _______,  _______,  _______,     _______,       _______,                  _______,                                            _______,                  _______,     _______,          _______,       _______,  _______,  _______),
 };
 
